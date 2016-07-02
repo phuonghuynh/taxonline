@@ -1,0 +1,45 @@
+curl -X GET http://localhost:8080/taxonline-webapp/taxpaid/f?year=2012&employeeId=1
+curl -H "Content-Type: application/json" --data @example.json http://localhost:8080/taxonline-webapp/taxpaid/g
+[{
+        "id": 1,
+        "firstName": "name_en",
+        "lastName": "name_vn",
+        "taxcode": "taxcode",
+        "dob": null,
+        "nod": 2,
+        "pwdno": "passport_no",
+        "arrivalDate": null,
+        "terminationDate": null,
+        "national": {
+            "id": 1,
+            "nameVn": "name_vn",
+            "nameEn": "name_en"
+        },
+        "compulsoryInsuranceNational": {
+            "id": 1,
+            "nameVn": "name_vn",
+            "nameEn": "name_en"
+        },
+        "position": {
+            "id": 1,
+            "nameVn": "name_vn",
+            "nameEn": "name_en"
+        },
+        "company": {
+            "id": 1,
+            "nameVn": "name_vn",
+            "nameEn": "name_en",
+            "address": "address",
+            "headOfOffice": {
+                "id": 1,
+                "nameEn": "name_en",
+                "address": "address",
+                "national": {
+                    "id": 1,
+                    "nameVn": "name_vn",
+                    "nameEn": "name_en"
+                }
+            }
+        }
+    }
+]

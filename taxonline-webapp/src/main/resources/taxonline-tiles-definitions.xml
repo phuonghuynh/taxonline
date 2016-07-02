@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="baseLayout" template="/jsp/layout/layout_conceptnova.jsp">
+		<put-attribute name="title" value="Tax Online" />
+		<put-attribute name="navigation" value="/jsp/layout/navigation.jsp" />
+		<put-attribute name="slogan" value="/jsp/layout/slogan.jsp" />
+		<put-attribute name="header_bottom" value="/jsp/layout/header_bottom.jsp" />
+		<put-attribute name="body_right" value="/jsp/layout/body_right.jsp" />
+		<put-attribute name="footer" value="/jsp/layout/footer.jsp" />
+	</definition>
+
+	<definition name="welcome" extends="baseLayout">
+		<put-attribute name="title" value="Tax Online: Welcome" />
+		<put-attribute name="body_left" value="/jsp/welcome.jsp" />
+	</definition>
+	
+	<definition name="personalinformation" extends="baseLayout">
+		<put-attribute name="title" value="Tax Online: Personal Information" />
+		<put-attribute name="body_left" value="/jsp/personalinformation.jsp" />
+	</definition>	
+
+	<definition name="taxpay" extends="baseLayout">
+		<put-attribute name="title" value="Tax Online: Personal Information" />
+		<put-attribute name="body_left" value="/jsp/taxpay.jsp" />
+	</definition>
+
+	<definition name="compulsorycontribution" extends="baseLayout">
+		<put-attribute name="title" value="Tax Online: Personal Information" />
+		<put-attribute name="body_left" value="/jsp/compulsorycontribution.jsp" />
+	</definition>
+
+	<definition name="exchangerate" extends="baseLayout">
+		<put-attribute name="title" value="Tax Online: Exchange Rate" />
+		<put-attribute name="body_left" value="/jsp/exchangerate.jsp" />
+	</definition>
+	
+	
+	<!-- Xuat Khau Lao Dong -->
+	<definition name="xkld/home" extends="baseLayout">
+		<put-attribute name="title" value="Tax Online: Welcome" />
+		<put-attribute name="body_left" value="/jsp/xkld/home.jsp" />
+	</definition>
+	
+	
+</tiles-definitions>

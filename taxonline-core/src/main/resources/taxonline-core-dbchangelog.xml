@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+   <property name="string_255" value="java.sql.Types.VARCHAR(255)" />
+   <property name="id_long" value="java.sql.Types.BIGINT" />
+   <property name="int" value="java.sql.Types.INTEGER" />
+   <property name="datetime" value="java.sql.Types.TIMESTAMP" />
+   <property name="date" value="java.sql.Types.DATE" />
+   <property name="float" value="java.sql.Types.FLOAT" />
+   <property name="double" value="java.sql.Types.DOUBLE" />
+
+   <changeSet id="10000" author="PhuongH">
+      <!-- <createTable tableName="user"> -->
+      <!-- <column name="id" type="${id_long}" autoIncrement="true"> -->
+      <!-- <constraints primaryKey="true" nullable="false" /> -->
+      <!-- </column> -->
+      <!-- <column name="first_name" type="${string_255}" /> -->
+      <!-- <column name="last_name" type="${string_255}" /> -->
+      <!-- <column name="phone" type="${string_255}" /> -->
+      <!-- </createTable> -->
+
+      <!-- <createTable tableName="user_company"> -->
+      <!-- <column name="user_id" type="${id_long}" /> -->
+      <!-- <column name="company_id" type="${id_long}" /> -->
+      <!-- </createTable> -->
+      <!-- <addPrimaryKey tableName="userCompany" columnNames="userId,companyId" constraintName="pk_userCompany" /> -->
+      <!-- <addForeignKeyConstraint constraintName="fk_userCompany_1" baseTableName="user_company" -->
+      <!-- baseColumnNames="user_id" referencedTableName="user" referencedColumnNames="id" /> -->
+      <!-- <addForeignKeyConstraint constraintName="fk_userCompany_2" baseTableName="user_company" -->
+      <!-- baseColumnNames="company_id" referencedTableName="company" referencedColumnNames="id" /> -->
+
+      <createTable tableName="national">
+         <column name="id" type="${id_long}" autoIncrement="true">
+            <constraints primaryKey="true" nullable="false" />
+         </column>
+         <column name="name_vn" type="${string_255}" />
+         <column name="name_en" type="${string_255}" />
+      </createTable>
+      
+      <createTable tableName="head_of_office">
+         <column name="id" type="${id_long}" autoIncrement="true">
+            <constraints primaryKey="true" nullable="false" />
+         </column>
+         <column name="name_en" type="${string_255}" />
+         <column name="address" type="${string_255}" />
+         <column name="national_id" type="${id_long}" />
+      </createTable>
+      <addForeignKeyConstraint constraintName="fk_998" baseTableName="head_of_office" baseColumnNames="national_id"
+         referencedTableName="national" referencedColumnNames="id" onDelete="SET NULL" />
+
+      <createTable tableName="company">
+         <column name="id" type="${id_long}" autoIncrement="true">
+            <constraints primaryKey="true" nullable="false" />
+         </column>
+         <column name="name_vn" type="${string_255}" />
+         <column name="name_en" type="${string_255}" />
+         <column name="address" type="${string_255}" />
+         <column name="hoo_id" type="${id_long}" />
+      </createTable>
+      <addForeignKeyConstraint constraintName="fk_999" baseTableName="company" baseColumnNames="hoo_id"
+         referencedTableName="head_of_office" referencedColumnNames="id" onDelete="SET NULL" />
+
+      <createTable tableName="position">
+         <column name="id" type="${id_long}" autoIncrement="true">
+            <constraints primaryKey="true" nullable="false" />
+         </column>
+         <column name="name_en" type="${string_255}" />
+         <column name="name_vn" type="${string_255}" />
+<!--          <column name="company_id" type="${id_long}" /> -->
+      </createTable>
+<!--       <addForeignKeyConstraint constraintName="fk_1000" baseTableName="position" -->
+<!--          baseColumnNames="company_id" referencedTableName="company" referencedColumnNames="id" /> -->
+
+<!--       <createTable tableName="position_company"> -->
+<!--          <column name="position_id" type="${id_long}" /> -->
+<!--          <column name="company_id" type="${id_long}" /> -->
+<!--       </createTable> -->
+<!--       <addPrimaryKey tableName="position_company" columnNames="position_id,company_id" constraintName="pk_1000" /> -->
+<!--       <addForeignKeyConstraint constraintName="fk_999_1" baseTableName="position_company" -->
+<!--          baseColumnNames="position_id" referencedTableName="position" referencedColumnNames="id" /> -->
+<!--       <addForeignKeyConstraint constraintName="fk_999_2" baseTableName="position_company" -->
+<!--          baseColumnNames="company_id" referencedTableName="company" referencedColumnNames="id" /> -->
+
+      <createTable tableName="employee">
+         <column name="id" type="${id_long}" autoIncrement="true">
+            <constraints primaryKey="true" nullable="false" />
+         </column>
+         <column name="first_name" type="${string_255}" />
+         <column name="last_name" type="${string_255}" />
+         <column name="taxcode" type="${string_255}" />
+         <column name="dob" type="${date}" />
+         <column name="number_of_dependant" type="${int}" />
+         <column name="passport_no" type="${string_255}" />
+         <column name="arrival_date" type="${date}" />
+         <column name="termination_date" type="${date}" />
+         <column name="national_id" type="${id_long}" />
+         <column name="company_id" type="${id_long}" />
+         <column name="position_id" type="${id_long}" />
+         <column name="compulsory_insurance_id" type="${id_long}" />
+<!--          <column name="tax_from" type="${int}" /> -->
+<!--          <column name="tax_to" type="${int}" /> -->
+<!--          <column name="tax_year" type="${int}" /> -->
+         <column name="tax_office_id" type="${id_long}" />
+      </createTable>
+      <addForeignKeyConstraint constraintName="fk_1001" baseTableName="employee"
+         baseColumnNames="company_id" referencedTableName="company" referencedColumnNames="id" onDelete="SET NULL" />
+      <addForeignKeyConstraint constraintName="fk_1002" baseTableName="employee"
+         baseColumnNames="national_id" referencedTableName="national" referencedColumnNames="id" onDelete="SET NULL" />
+      <addForeignKeyConstraint constraintName="fk_1003" baseTableName="employee"
+         baseColumnNames="position_id" referencedTableName="position" referencedColumnNames="id" onDelete="SET NULL" />
+      <addForeignKeyConstraint constraintName="fk_1004" baseTableName="employee"
+         baseColumnNames="compulsory_insurance_id" referencedTableName="national" referencedColumnNames="id" onDelete="SET NULL" />
+      <addForeignKeyConstraint constraintName="fk_1005" baseTableName="employee"
+         baseColumnNames="tax_office_id" referencedTableName="national" referencedColumnNames="id" onDelete="SET NULL" />
+         
+<!--       <createTable tableName="tax_paid"> -->
+<!--          <column name="id" type="${id_long}" autoIncrement="true"> -->
+<!--             <constraints primaryKey="true" nullable="false" /> -->
+<!--          </column> -->
+<!--          <column name="tax_month" type="${int}" /> -->
+<!--          <column name="tax_year" type="${int}" /> -->
+<!--          <column name="tax_amount" type="${float}" /> -->
+<!--          <column name="tax_reference" type="${string_255}" /> -->
+<!--          <column name="tax_status" type="${string_255}" /> -->
+<!--          <column name="employee_id" type="${id_long}" /> -->
+<!--       </createTable> -->
+<!--       <addForeignKeyConstraint constraintName="fk_1006" baseTableName="tax_paid" -->
+<!--          baseColumnNames="employee_id" referencedTableName="employee" referencedColumnNames="id" onDelete="CASCADE" /> -->
+
+<!--       <createTable tableName="currency"> -->
+<!--          <column name="id" type="${id_long}" autoIncrement="true"> -->
+<!--             <constraints primaryKey="true" nullable="false" /> -->
+<!--          </column> -->
+<!--          <column name="code" type="${string_255}" /> -->
+<!--       </createTable> -->
+
+
+<!--       <addForeignKeyConstraint constraintName="fk_1007" baseTableName="ex_rate" baseColumnNames="currency_id" -->
+<!--          referencedTableName="currency" referencedColumnNames="id" onDelete="CASCADE" /> -->
+      
+      <createTable tableName="abstract_currency">
+         <column name="id" type="${id_long}" autoIncrement="true">
+            <constraints primaryKey="true" nullable="false" />
+         </column>
+         <column name="cy_year" type="${int}" />
+         <column name="cy_month" type="${int}" />
+         <column name="cy_currency" type="${string_255}" />
+      </createTable>
+
+      <createTable tableName="tax_paid">
+         <column name="id" type="${id_long}" autoIncrement="true">
+            <constraints primaryKey="true" nullable="false" />
+         </column>
+         <column name="amount" type="${float}" />
+         <column name="reference" type="${string_255}" />
+         <column name="employee_id" type="${id_long}" />
+      </createTable>
+      <addForeignKeyConstraint constraintName="fk_1009" baseTableName="tax_paid"
+         baseColumnNames="employee_id" referencedTableName="employee" referencedColumnNames="id" onDelete="CASCADE" />
+         
+      <createTable tableName="compulsory_contribution">
+         <column name="id" type="${id_long}" autoIncrement="true">
+            <constraints primaryKey="true" nullable="false" />
+         </column>
+         <column name="amount" type="${float}" />
+         <column name="employee_id" type="${id_long}" />
+      </createTable>
+      <addForeignKeyConstraint constraintName="fk_1010" baseTableName="compulsory_contribution"
+         baseColumnNames="employee_id" referencedTableName="employee" referencedColumnNames="id" onDelete="CASCADE" />
+         
+      <createTable tableName="exchange_rate">
+         <column name="id" type="${id_long}" autoIncrement="true">
+            <constraints primaryKey="true" nullable="false" />
+         </column>
+         <column name="rate" type="${float}" />
+      </createTable>
+      
+   </changeSet>
+   
+   <changeSet id="10001" author="PhuongH" dbms="postgresql">
+      <sql splitStatements="false">
+         <![CDATA[
+            CREATE OR REPLACE FUNCTION delete_abstract_currency_by_id() RETURNS TRIGGER AS $table$ 
+            BEGIN
+               DELETE FROM abstract_currency WHERE id = OLD.id; 
+               RETURN OLD; 
+            END; 
+            $table$ LANGUAGE plpgsql;
+         ]]>
+      </sql>
+      <sql splitStatements="false">
+         <![CDATA[
+            CREATE TRIGGER tax_paid_delete AFTER DELETE ON tax_paid
+               FOR EACH ROW EXECUTE PROCEDURE delete_abstract_currency_by_id();
+         ]]>
+      </sql>
+      <sql splitStatements="false">
+         <![CDATA[
+            CREATE TRIGGER compulsory_contribution_delete AFTER DELETE ON compulsory_contribution
+               FOR EACH ROW EXECUTE PROCEDURE delete_abstract_currency_by_id();
+         ]]>
+      </sql>
+      <sql splitStatements="false">
+         <![CDATA[
+            CREATE TRIGGER exchange_rate_delete AFTER DELETE ON exchange_rate
+               FOR EACH ROW EXECUTE PROCEDURE delete_abstract_currency_by_id();
+         ]]>
+      </sql>
+   </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ConfirmationLetterInsurance" pageWidth="595" pageHeight="841" columnWidth="585" leftMargin="5" rightMargin="5" topMargin="5" bottomMargin="5">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="283"/>
+	<template><![CDATA["report\\styles.jrtx"]]></template>
+	<parameter name="countryName" class="java.lang.String"/>
+	<parameter name="taxOfficer_vn" class="java.lang.String"/>
+	<parameter name="taxOfficer_en" class="java.lang.String"/>
+	<parameter name="fullName" class="java.lang.String"/>
+	<parameter name="national" class="java.lang.String"/>
+	<parameter name="taxCode" class="java.lang.String"/>
+	<parameter name="period" class="java.lang.String"/>
+	<field name="month" class="java.lang.String"/>
+	<field name="amountFor" class="java.lang.String"/>
+	<field name="exchangeRate" class="java.lang.String"/>
+	<field name="amountVND" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="304" splitType="Stretch">
+			<staticText>
+				<reportElement style="text_size_12_Arial_Bold" x="100" y="1" width="349" height="19"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[THƯ XÁC NHẬN KHẤU TRỪ KHOẢN ĐÓNG GÓP BẮT BUỘC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="text_size_11_Arial_Italic" x="115" y="20" width="316" height="14"/>
+				<textElement markup="styled">
+					<font size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Confirmation on Withholding of Compulsory Contributions]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="text_size_11_Arial_Bold" x="0" y="52" width="100" height="15"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kính gửi: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="text_size_11_Arial_Bold" x="100" y="52" width="175" height="15"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Phòng Thuế Thu Nhập Cá Nhân]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="text_size_11_Arial" x="0" y="67" width="100" height="15"/>
+				<textElement>
+					<font isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[To:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="text_size_11_Arial_Bold" x="100" y="67" width="54" height="15"/>
+				<textElement>
+					<font size="11" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Cục Thuế]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="text_size_10_Arial" x="0" y="87" width="217" height="15"/>
+				<textElement>
+					<font isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Thay mặt tổ chức, cá nhân chi trả thu nhập:  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="text_size_10_Arial_Italic" x="0" y="102" width="275" height="15"/>
+				<textElement>
+					<font isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[On behalf of income paying individual, organisation:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="text_size_10_Arial" x="0" y="120" width="513" height="43"/>
+				<textElement>
+					<font isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Công ty xin xác nhận đã khấu trừ hàng tháng các khoản đóng góp bảo hiểm bắt buộc của nhân viên dưới đây theo quy định của luật pháp. Các khoản bảo hiểm bắt buộc này có tính chất tương tự như Bảo hiểm xã hội, Bảo hiểm y tế và Bảo hiểm thất nghiệp tại Việt Nam.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="text_size_10_Arial_Italic" x="0" y="163" width="513" height="42"/>
+				<textElement>
+					<font isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[We would like to confirm that the Company has withheld monthly compulsory contributions of the below employee in accordance with the law. These employee’s compulsory insurance contributions have the same nature with the Social Insurance, Health Insurance and Unemployment Insurance in Vietnam.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="text_size_11_Arial" x="137" y="34" width="107" height="15"/>
+				<textElement>
+					<font isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Tại nước / In country:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="text_size_10_Arial" x="0" y="208" width="100" height="15"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[1. Họ và tên/ Name:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="text_size_10_Arial" x="0" y="222" width="137" height="15"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[2. Quốc tịch (Nationality): ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="text_size_10_Arial" x="0" y="238" width="137" height="15"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[3. Mã số thuế/ Tax code: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="text_size_10_Arial" x="0" y="253" width="137" height="15"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[4. Giai đoạn đóng góp từ:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="text_size_10_Arial" x="0" y="272" width="407" height="15"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Số tiền đã khấu trừ cho giai đoạn trên chi tiết theo bảng liệt kê dưới đây:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="text_size_10_Arial" x="0" y="287" width="407" height="15"/>
+				<textElement>
+					<font isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[The withheld amount for the above period is listed in the table below:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="text_size_11_Arial" x="244" y="34" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{countryName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="text_size_11_Arial" x="307" y="52" width="206" height="15"/>
+				<textElement>
+					<font size="11" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[/The Personal Income Tax Division]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="text_size_11_Arial_Bold" x="155" y="67" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{taxOfficer_vn}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="text_size_11_Arial" x="307" y="67" width="26" height="15"/>
+				<textElement>
+					<font size="11" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[/The]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="text_size_11_Arial_Bold" x="333" y="67" width="88" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{taxOfficer_en}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="text_size_11_Arial" x="419" y="67" width="90" height="15"/>
+				<textElement>
+					<font size="11" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[ Tax Department]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="text_size_10_Arial" x="154" y="207" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{fullName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="text_size_10_Arial" x="154" y="222" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{national}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="text_size_10_Arial" x="154" y="238" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{taxCode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="text_size_10_Arial" x="154" y="253" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{period}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="51" splitType="Stretch">
+			<rectangle>
+				<reportElement style="text_size_8_Arial" x="11" y="-1" width="466" height="48"/>
+			</rectangle>
+			<staticText>
+				<reportElement style="text_size_8_Arial" x="22" y="0" width="100" height="32"/>
+				<textElement/>
+				<text><![CDATA[Tháng / Month]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="text_size_8_Arial" x="127" y="0" width="112" height="32"/>
+				<textElement/>
+				<text><![CDATA[Số tiền được khấu trừ/
+Withholding amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="text_size_8_Arial" x="255" y="31" width="100" height="20"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Tỷ Giá / Ex. Rate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="text_size_8_Arial" x="355" y="31" width="110" height="20"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[VND]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="text_size_8_Arial" x="127" y="31" width="100" height="20"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[USD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="text_size_8_Arial" x="244" y="0" width="221" height="32"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Quy đổi sang tiền đồng (trong tờ khai QT)
+Convert to VND (in the PIT Final)]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<textField>
+				<reportElement style="text_size_8_Arial" x="22" y="5" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{month}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="text_size_8_Arial" x="127" y="5" width="100" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{amountFor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="text_size_8_Arial" x="255" y="5" width="100" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{exchangeRate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="text_size_8_Arial" x="365" y="5" width="100" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{amountVND}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="273" splitType="Stretch">
+			<staticText>
+				<reportElement style="text_size_10_Arial" x="11" y="243" width="374" height="15"/>
+				<textElement>
+					<font isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Họ và tên / Full Name :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="text_size_10_Arial" x="12" y="258" width="374" height="15"/>
+				<textElement>
+					<font isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Chức vụ / Position:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="text_size_10_Arial" x="11" y="46" width="333" height="15"/>
+				<textElement>
+					<font isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Công ty đã nộp số tiền khấu trừ trên vào các Cơ quan liên quan.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="text_size_10_Arial" x="11" y="61" width="374" height="15"/>
+				<textElement>
+					<font isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[The Company has remitted the withheld amount to the relevant authorities. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="text_size_10_Arial" x="12" y="83" width="487" height="33"/>
+				<textElement>
+					<font isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Thư xác nhận này nhằm mục đích kê khai thuế Thu nhập cá nhân cho nhân viên này tại Việt Nam.
+This confirmation is for his/her Personal Income Tax declaration purposes in Vietnam.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="text_size_10_Arial" x="11" y="116" width="374" height="15"/>
+				<textElement>
+					<font isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[………, ngày…… tháng…..năm 20…]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="text_size_10_Arial" x="11" y="132" width="374" height="15"/>
+				<textElement>
+					<font isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[ĐẠI DIỆN HỢP PHÁP CỦA TỔ CHỨC, CÁ NHÂN TRẢ THU NHẬP ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="text_size_10_Arial" x="11" y="148" width="374" height="15"/>
+				<textElement>
+					<font isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Legal representative of organisation, individual paying incomes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="text_size_10_Arial" x="11" y="163" width="374" height="15"/>
+				<textElement>
+					<font isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Ký, ghi rõ họ tên; chức vụ và đóng dấu (nếu  có)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="text_size_10_Arial" x="11" y="178" width="374" height="15"/>
+				<textElement>
+					<font isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[sign with full name; position and seal (if any)]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

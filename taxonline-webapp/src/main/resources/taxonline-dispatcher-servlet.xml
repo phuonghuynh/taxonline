@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc"
+   xmlns:p="http://www.springframework.org/schema/p"
+   xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+      http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+   <mvc:annotation-driven>
+      <mvc:message-converters>
+         <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+            <property name="objectMapper">
+               <bean class="com.taxonline.core.Hibernate4AwareObjectMapper" />
+            </property>
+         </bean>
+      </mvc:message-converters>
+   </mvc:annotation-driven>
+
+   <context:annotation-config />
+   <context:component-scan base-package="com.kdtax.web" />
+   <context:component-scan base-package="com.xkld.web" />
+
+   <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+      <property name="basename" value="classpath:messages" />
+      <property name="defaultEncoding" value="UTF-8" />
+   </bean>
+
+   <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+      <property name="paramName" value="lang" />
+   </bean>
+
+   <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+      <property name="defaultLocale" value="en" />
+   </bean>
+
+   <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+      <property name="order" value="1" />
+      <property name="mediaTypes">
+         <map>
+            <entry key="html" value="text/html" />
+            <entry key="json" value="application/json" />
+         </map>
+      </property>
+      <property name="viewResolvers">
+         <list>
+            <bean class="org.springframework.web.servlet.view.tiles2.TilesViewResolver" p:order="2" />
+         </list>
+      </property>
+      <property name="defaultViews">
+         <list>
+            <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+         </list>
+      </property>
+      <property name="ignoreAcceptHeader" value="true" />
+   </bean>
+
+   <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+      <property name="definitions">
+         <list>
+            <value>classpath:taxonline-tiles-definitions.xml</value>
+         </list>
+      </property>
+   </bean>
+   
+	<context:component-scan base-package="com.himtech.report"/>
+	<bean class="org.springframework.web.servlet.view.XmlViewResolver">
+		<property name="location" value="classpath:report/jasper-views.xml"/>
+		<property name="order" value="0"/>
+	</bean>   
+   
+</beans>

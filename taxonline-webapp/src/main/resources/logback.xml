@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration scan="true">
+   <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+          <pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %p [%t] %c{1}: %m%n</pattern>
+      </encoder>
+   </appender>
+
+   <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+      <file>taxonline</file>
+         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+             <FileNamePattern>HI_JMS_%i.log</FileNamePattern>
+            <MinIndex>1</MinIndex>
+            <MaxIndex>12</MaxIndex>
+         </rollingPolicy>
+      
+      <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+          <MaxFileSize>10MB</MaxFileSize>
+      </triggeringPolicy>
+
+         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+         <pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %p [%t] %c{1}: %m%n</pattern>
+      </encoder>
+   </appender>
+
+<!--    <logger name="com.taxonline"> -->
+<!--       <level value="DEBUG"/> -->
+<!--       <appender-ref ref="CONSOLE"/> -->
+<!--       <appender-ref ref="FILE" /> -->
+<!--    </logger> -->
+
+   <!-- root logger configuration -->
+   <root>
+      <level value="DEBUG"/>
+      <appender-ref ref="CONSOLE"/>
+   </root>
+   
+</configuration>

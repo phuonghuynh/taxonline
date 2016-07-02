@@ -1,0 +1,1 @@
+<p>&copy; Copyright 2013 &middot; KA Corp. </p>

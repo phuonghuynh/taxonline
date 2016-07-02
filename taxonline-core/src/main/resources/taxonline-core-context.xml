@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+   xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+   xsi:schemaLocation="
+      http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+      http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+   <context:annotation-config />
+   <context:component-scan base-package="com.taxonline.core" />
+
+   <jpa:repositories base-package="com.taxonline.core.repo" />
+
+   <tx:annotation-driven mode="proxy" transaction-manager="transactionManager" />
+
+   <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+      <property name="entityManagerFactory" ref="entityManagerFactory" />
+   </bean>
+
+   <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+      <property name="driverClass" value="${jdbc.driver}" />
+      <property name="jdbcUrl" value="${jdbc.url}" />
+      <property name="user" value="${jdbc.user}" />
+      <property name="password" value="${jdbc.password}" />
+
+      <!-- these are C3P0 properties -->
+      <property name="acquireIncrement" value="${c3p0.acquireIncrement}" />
+      <property name="minPoolSize" value="${c3p0.minPoolSize}" />
+      <property name="maxPoolSize" value="${c3p0.maxPoolSize}" />
+      <property name="maxIdleTime" value="${c3p0.maxIdleTime}" />
+   </bean>
+
+   <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+      <property name="dataSource" ref="dataSource" />
+      <property name="jpaVendorAdapter" ref="${jpa.vendorAdaptor}" />
+      <property name="packagesToScan" value="com.taxonline.core.domain" />
+   </bean>
+
+   <bean id="hibernateVendorAdapter" class="com.taxonline.core.CustomHibernateJpaVendorAdapter">
+      <property name="database" value="${jpa.database}" />
+      <property name="showSql" value="${jpa.showSql}" />
+      <property name="formatSql" value="${jpa.showSql}" />
+   </bean>
+
+   <bean id="mapper" class="org.dozer.spring.DozerBeanMapperFactoryBean">
+      <property name="mappingFiles" value="classpath:taxonline-core-dozer.xml" />
+      <property name="customConvertersWithId">
+         <map>
+            <entry key="positionIdConverter">
+               <bean class="com.taxonline.core.dozer.converter.IdConverter">
+                  <property name="repo" ref="positionRepo" />
+               </bean>
+            </entry>
+            <entry key="nationalIdConverter">
+               <bean class="com.taxonline.core.dozer.converter.IdConverter">
+                  <property name="repo" ref="nationalRepo" />
+               </bean>
+            </entry>
+            <entry key="companyIdConverter">
+               <bean class="com.taxonline.core.dozer.converter.IdConverter">
+                  <property name="repo" ref="companyRepo" />
+               </bean>
+            </entry>
+            <entry key="hooIdConverter">
+               <bean class="com.taxonline.core.dozer.converter.IdConverter">
+                  <property name="repo" ref="headOfOfficeRepo" />
+               </bean>
+            </entry>
+            <entry key="employeeIdConverter">
+               <bean class="com.taxonline.core.dozer.converter.IdConverter">
+                  <property name="repo" ref="employeeRepo" />
+               </bean>
+            </entry>
+         </map>
+      </property>
+   </bean>
+</beans>

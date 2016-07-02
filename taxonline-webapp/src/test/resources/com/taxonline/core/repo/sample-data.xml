@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE dataset [
+   <!ELEMENT dataset (employee*)>
+   
+   <!ELEMENT employee EMPTY>
+   <!ATTLIST employee first_name CDATA #REQUIRED>
+   <!ATTLIST employee last_name CDATA #REQUIRED>
+]>
+<dataset>
+   <employee first_name="name_en" last_name="name_vn" />
+</dataset>

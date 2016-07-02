@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+   <mapping>
+      <class-a>com.taxonline.core.domain.Employee</class-a>
+      <class-b>com.taxonline.core.dto.EmployeeDto</class-b>
+      <field custom-converter-id="nationalIdConverter">
+         <a>national</a>
+         <b>nationalId</b>
+      </field>
+      <field custom-converter-id="nationalIdConverter">
+         <a>compulsoryInsuranceNational</a>
+         <b>compulsoryInsuranceNationalId</b>
+      </field>
+      <field custom-converter-id="positionIdConverter">
+         <a>position</a>
+         <b>positionId</b>
+      </field>
+      <field custom-converter-id="companyIdConverter">
+         <a>company</a>
+         <b>companyId</b>
+      </field>
+      <field custom-converter-id="nationalIdConverter">
+         <a>taxOffice</a>
+         <b>taxOfficeId</b>
+      </field>
+   </mapping>
+
+   <mapping>
+      <class-a>com.taxonline.core.domain.HeadOfOffice</class-a>
+      <class-b>com.taxonline.core.dto.HeadOfOfficeDto</class-b>
+      <field custom-converter-id="nationalIdConverter">
+         <a>national</a>
+         <b>nationalId</b>
+      </field>
+   </mapping>
+
+   <mapping>
+      <class-a>com.taxonline.core.domain.Company</class-a>
+      <class-b>com.taxonline.core.dto.CompanyDto</class-b>
+      <field custom-converter-id="hooIdConverter">
+         <a>headOfOffice</a>
+         <b>headOfOfficeId</b>
+      </field>
+   </mapping>
+
+   <mapping>
+      <class-a>com.taxonline.core.domain.TaxPaid</class-a>
+      <class-b>com.taxonline.core.dto.TaxPaidDto</class-b>
+      <field custom-converter-id="employeeIdConverter">
+         <a>employee</a>
+         <b>employeeId</b>
+      </field>
+   </mapping>
+   
+   <mapping>
+      <class-a>com.taxonline.core.domain.CompulsoryContribution</class-a>
+      <class-b>com.taxonline.core.dto.CompulsoryContributionDto</class-b>
+      <field custom-converter-id="employeeIdConverter">
+         <a>employee</a>
+         <b>employeeId</b>
+      </field>
+   </mapping>
+</mappings>

@@ -1,0 +1,5 @@
+DB: postgres
+User/Password: taxonline/taxonline
+DB Name: taxonline
+
+1. From taxonline-core, Run "mvn liquibase:update" to generate schema

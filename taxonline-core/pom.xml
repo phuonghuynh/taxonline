@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+   xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <modelVersion>4.0.0</modelVersion>
+   <parent>
+      <artifactId>taxonline</artifactId>
+      <groupId>com.kdtax</groupId>
+      <version>1.0</version>
+   </parent>
+   <artifactId>taxonline-core</artifactId>
+
+   <properties>
+      <spring.jpa.version>1.2.0.RELEASE</spring.jpa.version>
+<!--       <querydsl.version>3.1.1</querydsl.version> -->
+   </properties>
+
+   <dependencies>
+      <dependency>
+         <groupId>org.springframework.data</groupId>
+         <artifactId>spring-data-jpa</artifactId>
+         <version>${spring.jpa.version}</version>
+      </dependency>
+
+<!--       <dependency> -->
+<!--          <groupId>com.mysema.querydsl</groupId> -->
+<!--          <artifactId>querydsl-apt</artifactId> -->
+<!--          <version>${querydsl.version}</version> -->
+<!--       </dependency> -->
+
+<!--       <dependency> -->
+<!--          <groupId>com.mysema.querydsl</groupId> -->
+<!--          <artifactId>querydsl-jpa</artifactId> -->
+<!--          <version>${querydsl.version}</version> -->
+<!--       </dependency> -->
+   </dependencies>
+
+   <build>
+      <finalName>${project.name}-${project.version}</finalName>
+      <resources>
+         <resource>
+            <directory>src/main/resources</directory>
+            <filtering>true</filtering>
+         </resource>
+      </resources>
+      <plugins>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>2.3.2</version>
+            <configuration>
+               <source>${jdk.version}</source>
+               <target>${jdk.version}</target>
+            </configuration>
+         </plugin>
+
+         <plugin>
+            <!-- from http://forum.liquibase.org/topic/maven-integration-help : Turns out I was able to solve my own problem. 
+               The problem is that the example given here http://www.liquibase.org/manual/maven is wrong. The configuration in the example 
+               is specified in the executions tag and it should be specified directly under the plugin tag. Also a phase is not needed but 
+               you can use it if you want your update to run automatically when you do a mvn compile or a mvn test. So using this new pom.xml 
+               I can run "mvn process-resources" or a "mvn compile" and the update goal will run successfully. Or I can run "mvn liquibase:update" 
+               and the update goal will run successfully. Or I can run "mvn liquibase:rollback -DrollbackCount=5" and my rollback goal will 
+               run and rollback the last 5 change sets. One other note: -you can create your own liquibase.properties file, but I find it 
+               much easier to add settings to your ~/.m2/settings.xml file and then directly reference those properties in your pom.xml 
+               like I did with my ${jdbc.url} references. -->
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-maven-plugin</artifactId>
+            <version>2.0.1</version>
+            <configuration>
+               <propertyFileWillOverride>true</propertyFileWillOverride>
+               <propertyFile>src/main/resources/liquibase.properties</propertyFile>
+            </configuration>
+            <dependencies>
+               <dependency>
+                  <groupId>postgresql</groupId>
+                  <artifactId>postgresql</artifactId>
+                  <version>9.1-901.jdbc4</version>
+               </dependency>
+            </dependencies>
+         </plugin>
+
+<!--          <plugin> -->
+<!--             <groupId>com.mysema.maven</groupId> -->
+<!--             <artifactId>apt-maven-plugin</artifactId> -->
+<!--             <executions> -->
+<!--                <execution> -->
+<!--                   <goals> -->
+<!--                      <goal>process</goal> -->
+<!--                   </goals> -->
+<!--                   <configuration> -->
+<!--                      <outputDirectory>src/main/java</outputDirectory> -->
+<!--                      <processor>com.mysema.query.apt.jpa.JPAAnnotationProcessor</processor> -->
+<!--                   </configuration> -->
+<!--                </execution> -->
+<!--             </executions> -->
+<!--          </plugin> -->
+      </plugins>
+      <pluginManagement>
+         <plugins>
+            <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+            <plugin>
+               <groupId>org.eclipse.m2e</groupId>
+               <artifactId>lifecycle-mapping</artifactId>
+               <version>1.0.0</version>
+               <configuration>
+                  <lifecycleMappingMetadata>
+                     <pluginExecutions>
+                        <pluginExecution>
+                           <pluginExecutionFilter>
+                              <groupId>com.mysema.maven</groupId>
+                              <artifactId>apt-maven-plugin</artifactId>
+                              <versionRange>[1.0.6,)</versionRange>
+                              <goals>
+                                 <goal>process</goal>
+                              </goals>
+                           </pluginExecutionFilter>
+                           <action>
+                              <ignore></ignore>
+                           </action>
+                        </pluginExecution>
+                     </pluginExecutions>
+                  </lifecycleMappingMetadata>
+               </configuration>
+            </plugin>
+         </plugins>
+      </pluginManagement>
+   </build>
+
+</project>
